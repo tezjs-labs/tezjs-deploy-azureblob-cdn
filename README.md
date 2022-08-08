@@ -1,16 +1,32 @@
-# Vue 3 + TypeScript + Vite
+# Deploy to Azure blob and cdn
+In this guide, you will learn how to deploy your tezjs site to Azure Blob and CDN configuration.
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Deployed Url:
+https://tezjsblobcdn.azureedge.net/
 
-## Recommended IDE Setup
+## Preparing for deployment:
+Run the following command to create tezjs project:
+  - `npm create tez@latest`
+  - `cd [projectName]`
+  - `npm install` - for installing the required dependencies
+  - `npm run build` - for build the project
+  - `npm run dev` - for run the project
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+## Pre-requisites
+Make sure you have:
+  - Azure account.
+  - Node installed in your machine.
 
-## Type Support For `.vue` Imports in TS
+## Deployment
+Go to https://www.portal.azure.com/ and login, create team. 
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+- Create Resource group and Storage account from Azure Portal
+- Enable static website option from data management section
+- Primary url get like https://tezjsblobcdn.z29.web.core.windows.net/
+- Add index.html in Index document name of static website option from data management section
+- Upload dist folder content to $web folder
+- Select and configure Azure CDN option from Security + networking section
+- Create new CDN Profile
+- Select Origin hostname as a static web app
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
